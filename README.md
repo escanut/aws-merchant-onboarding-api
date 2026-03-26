@@ -123,9 +123,9 @@ Three things to revisit before 10x growth:
  
 | Method | Path | Description |
 |---|---|---|
-| `POST` | `/merchants` | Register a new merchant |
-| `GET` | `/merchants` | Paginated admin listing (GSI query) |
-| `GET` | `/merchants/{id}` | Retrieve a single merchant record |
+| POST | `/merchants` | Register a new merchant |
+| GET | `/merchants` | Paginated admin listing (GSI query) |
+| GET | `/merchants/{id}` | Retrieve a single merchant record |
  
 All endpoints require a valid Cognito JWT in the `Authorization` header. Requests without a valid token are rejected at API Gateway before Lambda is invoked.
  
@@ -153,6 +153,6 @@ All endpoints require a valid Cognito JWT in the `Authorization` header. Request
 Open to remote Cloud and SRE roles with infrastructure security depth.
 
 *LinkedIn: [linkedin.com/in/victorojeje](linkedin.com/in/victorojeje) | GitHub: [github.com/escanut](github.com/escanut)
-Blog: [dev.to/escanut](dev.to/escanut)*
+| Blog: [dev.to/escanut](dev.to/escanut)*
  
 
