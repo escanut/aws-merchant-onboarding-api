@@ -1,0 +1,49 @@
+# Generated the secret hash with these
+import hmac
+import hashlib
+import base64
+
+client_id = "3einfu39fvd2opcoldicn0fh2q"
+client_secret = "YOUR_CLIENT_SECRET"
+username = "ojejevictor@gmail.com"
+
+message = username + client_id
+
+secret_hash = base64.b64encode(
+    hmac.new(
+        client_secret.encode("utf-8"),
+        message.encode("utf-8"),
+        hashlib.sha256
+    ).digest()
+).decode()
+
+print(secret_hash)
+
+
+# I generated the Token with this AWS CLI command
+aws cognito-idp initiate-auth \
+  --client-id 3einfu39fvd2opcoldicn0fh2q \
+  --auth-flow USER_PASSWORD_AUTH \
+  --auth-parameters USERNAME=ojejevictor@gmail.com,PASSWORD=yourpassword,SECRET_HASH=<computed_hash>
+
+
+# Then ran and tested the api with these commands 
+curl -X POST https://93z9qxnyv4.execute-api.us-east-1.amazonaws.com/prod/merchants \
+  -H "Authorization: IdToken" \
+  -H "Content-Type: application/json" \
+  -d '{"business_name": "Jiji", "cac_number": "128957", "contact_email": "jiji@example.com"}'
+
+
+curl -X GET https://93z9qxnyv4.execute-api.us-east-1.amazonaws.com/prod/merchants \
+  -H "Authorization: IdToken" 
+
+curl -X GET https://93z9qxnyv4.execute-api.us-east-1.amazonaws.com/prod/merchants/01fcd787-47d1-4db5-a396-f2adcf0c3e18 \
+  -H "Authorization: IdToken" 
+
+
+
+
+
+
+ 
+  
